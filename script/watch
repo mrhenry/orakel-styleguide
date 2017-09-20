@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+script/config-git
+yarn
+gulp watch

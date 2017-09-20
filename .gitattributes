@@ -1,0 +1,9 @@
+*.eot -crlf -diff merge=ours
+*.tff -crlf -diff merge=ours
+*.woff -crlf -diff merge=ours
+app.es6.js -diff merge=ours
+app.es6.min.js -diff merge=ours
+app.min.js -diff merge=ours
+app.js -diff merge=ours
+application.min.css -diff merge=ours
+application.css -diff merge=ours
