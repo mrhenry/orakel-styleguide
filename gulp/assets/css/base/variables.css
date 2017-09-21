@@ -1,8 +1,20 @@
 :root {
-	--color-foreground: #222;
-	--color-background: #fefefe;
-	--color-white: #fefefe;
-	--color-black: #222;
-	--font-sans: 'Helvetica Neue', sans-serif;
+	/*
+	 * Colors
+	 */
+	--color-black: #1d1d1b;
+	--color-grey: #b7b7b7;
+	--color-grey-dark: #575757;
+	--color-grey-tinted: #e5e5e5;
+	--color-grey-shaded: #5d5d5d;
+	--color-off-white: #f5f5f5;
+	--color-white: #fff;
+	--color-red: #e42d18;
+	--color-red-shaded: rgb(158, 39, 6);
+
+	/*
+	 * Fonts
+	 */
+	--font-sans: 'proxima-soft', sans-serif;
 	--font-serif: 'Georgia', serif;
 }

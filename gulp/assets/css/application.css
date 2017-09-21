@@ -11,5 +11,6 @@
 @import 'base/utilities.css';
 
 /* Modules */
+@import 'modules/button.css';
 
 /* Layouts */
