@@ -173,3 +173,13 @@
 		}
 	}
 }
+
+/**
+ * Code
+ */
+.sg-code {
+	background-color: rgb(230,230,230);
+	color: rgb(100,100,100);
+	padding: 20px;
+	overflow: auto;
+}
