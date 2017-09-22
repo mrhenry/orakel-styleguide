@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ i18n.current_language }}" class="no-js">
+<html lang="en" class="no-js">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
@@ -67,171 +67,325 @@
 			})(document);
 		</script>
 	</head>
-<body>
-	<section class="sg-intro">
-		<svg class="sg-intro__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.2 41.9">
-			<path d="M20.7.2C10.3.2 1.6 7.6.1 17.6h7.8c1.5-5.7 6.7-9.8 12.8-9.8 7.2 0 13.2 5.9 13.2 13.2 0 7.3-6 13.2-13.2 13.2-7.1 0-12.9-5.5-13.3-12.5V21H0v.7c.4 11.1 9.5 20 20.7 20 11.4 0 20.7-9.3 20.7-20.7C41.3 9.5 32.1.2 20.7.2zM46.4 21.5v19h7.4V21c-.3-7 6-12.5 13-12.5V1.2c-11.3 0-20.4 9.1-20.4 20.3zM88.9 0C77.5 0 68.2 9.3 68.2 20.8c0 11.4 9.3 20.7 20.7 20.7 3.5 0 6.8-.8 9.8-2.3v-8.9l-2.8 1.8h-.1c-2.1 1.2-4.4 1.9-6.9 1.9-7.3 0-13.2-5.9-13.2-13.2S81.6 7.5 88.9 7.5s13.4 6 13.4 13.3v19.7h7.5V20.8C109.7 9.4 100.4 0 88.9 0zM211.1 21.5L211 .4h-7.3v21.1c0 11.3 9.2 20.4 20.5 20.4v-7.5c-7.2 0-13.1-5.7-13.1-12.9zM117.7 40.3h7.6V.3h-7.6M145.5.3l-16.6 15.3v9.5h4c7.5-.1 13.6 7.1 13.6 15.5h7.2c0-10.7-7.5-19.3-16.6-22.4L156.6.3h-11.1zM186 31.4c-2.2 1.5-4.8 2.3-7.4 2.3-7.2 0-13.1-5.9-13.1-13.1s5.9-13 13.1-13c3.2 0 6.1 1.2 8.4 3.1l-17.4 12.7 3.4 5.3 5.1-3.8-.7.6 12.9-9.2-.5.3 7.2-4.7C193.7 5 186.7.3 178.6.3c-11.2 0-20.4 9.2-20.4 20.4 0 11.3 9.2 20.4 20.4 20.4 4.2 0 8.1-1.2 11.6-3.6 3.3-2.2 6-5.4 7.4-9.2 0 0 .3-.9.5-1.4h-7.9c-1.1 1.8-2.5 3.4-4.2 4.5z"/>
-		</svg>
-
-		<h1 class="sg-intro__title">
-			Styleguide
-		</h1>
-
-		<p>
-			This styleguide can be seen as the front-end framework for the Orakel platform. It will contain the brand styles, page layouts and behavioural components with demos based on static dummy data.
-		</p>
-
-		<p>
-			<a class="button" href="https://github.com/mrhenry/orakel-styleguide">
-				View code on Github
-			</a>
-		</p>
-	</section>
-
-	<!-- Typography -->
-	<section class="sg-section" id="typography">
-		<div class="sg-wrapper">
-			<h1 class="sg-section__title">
-				<a href="#typography">Typography</a>
-			</h1>
-
-			<h1>
-				Main title
-			</h1>
-
-			<p>
-				Lorem ipsum dolor sit amet, <strong>consectetur adipisicing</strong> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco <em>laboris nisi</em> ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non roident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-
-			<p>
-				Duis aute irure dolor in <a href="">reprehenderit in voluptate</a> velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non roident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-
-			<h2>
-				Subtitle
-			</h2>
-
-			<ul>
-				<li>
-					And a one
-				</li>
-				<li>
-					a two
-				</li>
-				<li>
-					and a three
-				</li>
-				<li>
-					let's rock'n'roll!
-				</li>
-			</ul>
-
-			<h3>
-				Let there be subhead
-			</h3>
-
-			<ol>
-				<li>
-					And a one
-				</li>
-				<li>
-					a two
-				</li>
-				<li>
-					and a three
-				</li>
-				<li>
-					let's rock'n'roll!
-				</li>
-			</ol>
-		</div>
-	</section>
-
-	<!-- Buttons -->
-	<section class="sg-section" id="buttons">
-		<div class="sg-wrapper">
-			<h1 class="sg-section__title">
-				<a href="#buttons">Button</a>
-			</h1>
-
-			<a class="button" href="#buttons">Default</a>
-			<a class="button button--primary" href="#buttons">Primary</a>
-			<a class="button button--primary button--red" href="#buttons">Primary / Red</a>
-
-			<br>
-			<br>
-
-			<h1 class="sg-section__title">
-				<a href="#buttons">Disabled button</a>
-			</h1>
-
-			<a class="button button--primary button--red" disabled href="#buttons">Default</a>
-		</div>
-	</section>
-
-	<!-- Forms -->
-	<section class="sg-section" id="forms">
-		<div class="sg-wrapper">
-			<h1 class="sg-section__title">
-				<a href="#forms">Forms</a>
-			</h1>
-		</div>
-	</section>
-
-	<!-- Slideshow -->
-	<section class="sg-section" id="slideshow">
-		<div class="sg-wrapper">
-			<h1 class="sg-section__title">
-				<a href="#slideshow">Slideshow</a>
-			</h1>
-
-			<mr-slideshow class="slideshow" loop>
-				<img alt="" class="slideshow__image" src="https://orakel-eu.imgix.net/files/552/large/Promo%20Tyvek%201.jpg">
-
-				<img alt="" class="slideshow__image" src="https://orakel-eu.imgix.net/files/515/large/polsbandjes in textiel met metalen sluiting, toegangscontrole voor uw evenement, tot 8 kleuren inweving.jpg">
-
-				<img alt="" class="slideshow__image" src="https://orakel-eu.imgix.net/files/518/large/Plastic tube closure.jpg">
-			</mr-slideshow>
-
-			<br>
-			<br>
-
-			<pre class="sg-code">
-&lt;mr-slideshow class=&quot;slideshow&quot; loop&gt;
-	&lt;img alt=&quot;&quot; src=&quot;&quot;&gt;
-	&lt;img alt=&quot;&quot; src=&quot;&quot;&gt;
-&lt;/mr-slideshow&gt;</pre>
-		</div>
-	</section>
-
-	<!-- STYLEGUIDE NAVIGATION -->
-	<section class="sg-nav">
-		<input id="sg-nav__checkbox" type="checkbox">
-
-		<nav class="sg-nav__nav">
-			<h1 class="sg-nav__nav__title">
-
-			</h1>
-
-			<ul class="sg-nav__nav__list">
-				<li class="sg-nav__nav__list__item">
-					<a class="sg-nav__nav__link" href="#typography">Typography</a>
-				</li>
-				<li class="sg-nav__nav__list__item">
-					<a class="sg-nav__nav__link" href="#buttons">Buttons</a>
-				</li>
-				<li class="sg-nav__nav__list__item">
-					<a class="sg-nav__nav__link" href="#forms">Forms</a>
-				</li>
-			</ul>
-		</nav>
-
-		<label class="sg-nav__toggle" for="sg-nav__checkbox">
-			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 768 768">
-				<path fill="#000" d="M663.8 405.4c0 0 0 0 0 0 0.2-0.2 0.2-0.2 0.2-0.2s0 0 0 0 0.2-0.2 0.2-0.2c0 0 0.2-0.2 0.2-0.2s0 0 0 0 0.2-0.2 0.2-0.2c0 0 0 0 0 0 2-2.4 3.6-5 4.8-7.8 0 0 0 0 0-0.2 0 0 0-0.2 0-0.2s0-0.2 0-0.2c0 0 0 0 0 0 1.2-3 2-6.2 2.2-9.6 0 0 0 0 0 0s0-0.2 0-0.2c0 0 0-0.2 0-0.2s0-0.2 0-0.2c0 0 0-0.2 0-0.2s0 0 0-0.2c0-0.8 0-1.6 0-2.4 0 0 0 0 0-0.2 0 0 0-0.2 0-0.2s0-0.2 0-0.2c0 0 0-0.2 0-0.2s0-0.2 0-0.2c0 0 0 0 0 0-0.2-3.4-1-6.6-2.2-9.6 0 0 0 0 0-0.2 0 0 0 0 0-0.2 0 0 0-0.2-0.2-0.2 0 0 0 0 0 0-1.2-3-3-5.6-5-8.2 0 0 0 0 0 0s-0.2-0.2-0.2-0.2c0 0 0 0 0 0s-0.2-0.2-0.2-0.2-0.2-0.2-0.2-0.2 0 0 0-0.2c-0.4-0.4-0.8-0.8-1.2-1.2l-192-192c-12.4-12.4-32.8-12.4-45.2 0s-12.4 32.8 0 45.2l137.4 137.4h-434.6c-17.6 0-32 14.4-32 32s14.4 32 32 32h434.8l-137.4 137.4c-12.4 12.4-12.4 32.8 0 45.2 6.2 6.2 14.4 9.4 22.6 9.4s16.4-3.2 22.6-9.4l191.8-191.8c0.6-0.8 1-1.4 1.4-1.8z"></path>
+	<body>
+		<section class="sg-intro">
+			<svg class="sg-intro__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 224.2 41.9">
+				<path d="M20.7.2C10.3.2 1.6 7.6.1 17.6h7.8c1.5-5.7 6.7-9.8 12.8-9.8 7.2 0 13.2 5.9 13.2 13.2 0 7.3-6 13.2-13.2 13.2-7.1 0-12.9-5.5-13.3-12.5V21H0v.7c.4 11.1 9.5 20 20.7 20 11.4 0 20.7-9.3 20.7-20.7C41.3 9.5 32.1.2 20.7.2zM46.4 21.5v19h7.4V21c-.3-7 6-12.5 13-12.5V1.2c-11.3 0-20.4 9.1-20.4 20.3zM88.9 0C77.5 0 68.2 9.3 68.2 20.8c0 11.4 9.3 20.7 20.7 20.7 3.5 0 6.8-.8 9.8-2.3v-8.9l-2.8 1.8h-.1c-2.1 1.2-4.4 1.9-6.9 1.9-7.3 0-13.2-5.9-13.2-13.2S81.6 7.5 88.9 7.5s13.4 6 13.4 13.3v19.7h7.5V20.8C109.7 9.4 100.4 0 88.9 0zM211.1 21.5L211 .4h-7.3v21.1c0 11.3 9.2 20.4 20.5 20.4v-7.5c-7.2 0-13.1-5.7-13.1-12.9zM117.7 40.3h7.6V.3h-7.6M145.5.3l-16.6 15.3v9.5h4c7.5-.1 13.6 7.1 13.6 15.5h7.2c0-10.7-7.5-19.3-16.6-22.4L156.6.3h-11.1zM186 31.4c-2.2 1.5-4.8 2.3-7.4 2.3-7.2 0-13.1-5.9-13.1-13.1s5.9-13 13.1-13c3.2 0 6.1 1.2 8.4 3.1l-17.4 12.7 3.4 5.3 5.1-3.8-.7.6 12.9-9.2-.5.3 7.2-4.7C193.7 5 186.7.3 178.6.3c-11.2 0-20.4 9.2-20.4 20.4 0 11.3 9.2 20.4 20.4 20.4 4.2 0 8.1-1.2 11.6-3.6 3.3-2.2 6-5.4 7.4-9.2 0 0 .3-.9.5-1.4h-7.9c-1.1 1.8-2.5 3.4-4.2 4.5z"/>
 			</svg>
-		</label>
-	</section>
-</svg>
-</body>
+
+			<h1 class="sg-intro__title">
+				Styleguide
+			</h1>
+
+			<p>
+				This styleguide can be seen as the front-end framework for the Orakel platform. It will contain the brand styles, page layouts and behavioural components with demos based on static dummy data.
+			</p>
+
+			<p>
+				<a class="button" href="https://github.com/mrhenry/orakel-styleguide">
+					View code on Github
+				</a>
+			</p>
+		</section>
+
+		<!-- Getting started -->
+		<section class="sg-section" id="getting-started">
+			<div class="sg-wrapper">
+				<h1 class="sg-section__title">
+					<a href="#getting-started">Getting started</a>
+				</h1>
+
+				<h2>
+					Boilerplate HTML
+				</h2>
+
+				<p>
+					Every page should start from the boilerplate HTML:
+				</p>
+				<p>
+					<a class="button" href="https://github.com/mrhenry/orakel-styleguide/templates/boilerplate.html" target="_blank">View boilerplate.html</a>
+				</p>
+
+				<p>
+					Additional assets can be added into the <code>&lt;head&gt;</code> section.
+				</p>
+			</div>
+		</section>
+
+		<!-- Typography -->
+		<section class="sg-section" id="typography">
+			<div class="sg-wrapper">
+				<h1 class="sg-section__title">
+					<a href="#typography">Typography</a>
+				</h1>
+
+				<h1>
+					Main title
+				</h1>
+
+				<p>
+					Lorem ipsum dolor sit amet, <strong>consectetur adipisicing</strong> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco <em>laboris nisi</em> ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non roident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+
+				<p>
+					Duis aute irure dolor in <a href="">reprehenderit in voluptate</a> velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non roident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+
+				<h2>
+					Subtitle
+				</h2>
+
+				<ul>
+					<li>
+						And a one
+					</li>
+					<li>
+						a two
+					</li>
+					<li>
+						and a three
+					</li>
+					<li>
+						let's rock'n'roll!
+					</li>
+				</ul>
+
+				<h3>
+					Let there be subtitle
+				</h3>
+
+				<ol>
+					<li>
+						And a one
+					</li>
+					<li>
+						a two
+					</li>
+					<li>
+						and a three
+					</li>
+					<li>
+						let's rock'n'roll!
+					</li>
+				</ol>
+			</div>
+		</section>
+
+		<!-- Buttons -->
+		<section class="sg-section" id="buttons">
+			<div class="sg-wrapper">
+				<h1 class="sg-section__title">
+					<a href="#buttons">Button</a>
+				</h1>
+
+				<a class="button" href="#buttons">Default</a>
+				<a class="button button--primary" href="#buttons">Primary</a>
+				<a class="button button--primary button--red" href="#buttons">Primary / Red</a>
+
+				<br>
+				<br>
+
+				<h1 class="sg-section__title">
+					<a href="#buttons">Disabled button</a>
+				</h1>
+
+				<a class="button button--primary button--red" disabled href="#buttons">Default</a>
+			</div>
+		</section>
+
+		<!-- Forms -->
+		<section class="sg-section" id="forms">
+			<div class="sg-wrapper">
+				<h1 class="sg-section__title">
+					<a href="#forms">Forms</a>
+				</h1>
+
+				<h2>
+					Input field
+				</h2>
+
+				<input class="input" name="" placeholder="placeholder text" type="text">
+
+				<br>
+
+				<h2>
+					Text area
+				</h2>
+
+				<textarea class="input input--textarea"></textarea>
+
+				<br>
+
+				<h2>
+					Select
+				</h2>
+
+				<select class="select">
+					<option value="">
+						Iene
+					</option>
+					<option value="">
+						Miene
+					</option>
+					<option value="">
+						Mutte
+					</option>
+				</select>
+
+				<br>
+
+				<h2>
+					Form group - Default / Vertical
+				</h2>
+
+				<div class="form-group">
+					<label class="label" for="form-group-1">
+						First name
+					</label>
+
+					<input class="input" id="form-group-1" name="" type="text">
+				</div>
+
+				<div class="form-group">
+					<label class="label" for="form-group-2">
+						Last name
+					</label>
+
+					<input class="input" id="form-group-2" name="" type="text">
+				</div>
+
+				<div class="form-group">
+					<button class="button button--primary" type="submit">
+						Submit
+					</button>
+				</div>
+			</div>
+		</section>
+
+		<a id="#components"></a>
+
+		<!-- Slideshow -->
+		<section class="sg-section" id="slideshow">
+			<div class="sg-wrapper">
+				<h1 class="sg-section__title">
+					<a href="#slideshow">Slideshow</a>
+				</h1>
+
+				<mr-slideshow class="slideshow" loop>
+					<img alt="" class="slideshow__image" src="https://orakel-eu.imgix.net/files/552/large/Promo%20Tyvek%201.jpg">
+
+					<img alt="" class="slideshow__image" src="https://orakel-eu.imgix.net/files/515/large/polsbandjes in textiel met metalen sluiting, toegangscontrole voor uw evenement, tot 8 kleuren inweving.jpg">
+
+					<img alt="" class="slideshow__image" src="https://orakel-eu.imgix.net/files/518/large/Plastic tube closure.jpg">
+				</mr-slideshow>
+
+				<h2>
+					Code
+				</h2>
+
+				<pre class="sg-code">
+<code class="html">&lt;mr-slideshow class=&quot;slideshow&quot; loop&gt;
+	&lt;img alt=&quot;&quot; src=&quot;&quot;&gt;
+	&lt;img alt=&quot;&quot; src=&quot;&quot;&gt;
+&lt;/mr-slideshow&gt;</code></pre>
+			</div>
+		</section>
+
+		<!-- STYLEGUIDE NAVIGATION -->
+		<section class="sg-nav">
+			<input id="sg-nav__checkbox" type="checkbox">
+
+			<div class="sg-nav__drawer">
+				<nav class="sg-nav__nav">
+					<h1 class="sg-nav__nav__title">
+						Getting started
+					</h1>
+
+					<ul class="sg-nav__nav__list">
+						<li class="sg-nav__nav__list__item">
+							<a class="sg-nav__nav__link js-sg-nav-link" href="#getting-started">
+								Boilerplate HTML
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+				<nav class="sg-nav__nav">
+					<h1 class="sg-nav__nav__title">
+						Basic styles
+					</h1>
+
+					<ul class="sg-nav__nav__list">
+						<li class="sg-nav__nav__list__item">
+							<a class="sg-nav__nav__link js-sg-nav-link" href="#typography">
+								Typography
+							</a>
+						</li>
+						<li class="sg-nav__nav__list__item">
+							<a class="sg-nav__nav__link js-sg-nav-link" href="#buttons">
+								Buttons
+							</a>
+						</li>
+						<li class="sg-nav__nav__list__item">
+							<a class="sg-nav__nav__link js-sg-nav-link" href="#forms">
+								Forms
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+				<nav class="sg-nav__nav">
+					<h1 class="sg-nav__nav__title">
+						Layouts
+					</h1>
+
+					<ul class="sg-nav__nav__list">
+						<li class="sg-nav__nav__list__item">
+							<a class="sg-nav__nav__link js-sg-nav-link" href="#typography">
+								Foo
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+				<nav class="sg-nav__nav">
+					<h1 class="sg-nav__nav__title">
+						Components
+					</h1>
+
+					<ul class="sg-nav__nav__list">
+						<li class="sg-nav__nav__list__item">
+							<a class="sg-nav__nav__link js-sg-nav-link" href="#slideshow">
+								Slideshow
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<label class="sg-nav__toggle" for="sg-nav__checkbox">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 768 768">
+					<path fill="#000" d="M663.8 405.4c0 0 0 0 0 0 0.2-0.2 0.2-0.2 0.2-0.2s0 0 0 0 0.2-0.2 0.2-0.2c0 0 0.2-0.2 0.2-0.2s0 0 0 0 0.2-0.2 0.2-0.2c0 0 0 0 0 0 2-2.4 3.6-5 4.8-7.8 0 0 0 0 0-0.2 0 0 0-0.2 0-0.2s0-0.2 0-0.2c0 0 0 0 0 0 1.2-3 2-6.2 2.2-9.6 0 0 0 0 0 0s0-0.2 0-0.2c0 0 0-0.2 0-0.2s0-0.2 0-0.2c0 0 0-0.2 0-0.2s0 0 0-0.2c0-0.8 0-1.6 0-2.4 0 0 0 0 0-0.2 0 0 0-0.2 0-0.2s0-0.2 0-0.2c0 0 0-0.2 0-0.2s0-0.2 0-0.2c0 0 0 0 0 0-0.2-3.4-1-6.6-2.2-9.6 0 0 0 0 0-0.2 0 0 0 0 0-0.2 0 0 0-0.2-0.2-0.2 0 0 0 0 0 0-1.2-3-3-5.6-5-8.2 0 0 0 0 0 0s-0.2-0.2-0.2-0.2c0 0 0 0 0 0s-0.2-0.2-0.2-0.2-0.2-0.2-0.2-0.2 0 0 0-0.2c-0.4-0.4-0.8-0.8-1.2-1.2l-192-192c-12.4-12.4-32.8-12.4-45.2 0s-12.4 32.8 0 45.2l137.4 137.4h-434.6c-17.6 0-32 14.4-32 32s14.4 32 32 32h434.8l-137.4 137.4c-12.4 12.4-12.4 32.8 0 45.2 6.2 6.2 14.4 9.4 22.6 9.4s16.4-3.2 22.6-9.4l191.8-191.8c0.6-0.8 1-1.4 1.4-1.8z"></path>
+				</svg>
+			</label>
+		</section>
+
+		<!-- Syntax highlighter -->
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+
+		<!-- Styleguide behaviour -->
+		<script>
+			(function() {
+				var sgNavCheckbox = document.querySelector('#sg-nav__checkbox');
+
+				for (var el of document.querySelectorAll('.js-sg-nav-link')) {
+					el.addEventListener('click', function() {
+						sgNavCheckbox.checked = false;
+					});
+				};
+			}());
+		</script>
+	</body>
 </html>
