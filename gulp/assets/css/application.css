@@ -14,5 +14,7 @@
 @import 'modules/button.css';
 @import 'modules/forms.css';
 @import 'modules/slideshow.css';
+@import 'modules/wrapper.css';
 
 /* Layouts */
+@import 'layouts/sidebar.css';

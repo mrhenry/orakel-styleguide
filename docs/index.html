@@ -262,7 +262,41 @@
 			</div>
 		</section>
 
-		<a id="#components"></a>
+		<!-- Sidebar -->
+		<section class="sg-section" id="layout-sidebar">
+			<div class="sg-wrapper">
+				<h1 class="sg-section__title">
+					<a href="layout-sidebar">
+						Layout - Sidebar
+					</a>
+				</h1>
+			</div>
+
+			<div class="sg-wrapper">
+				<pre class="sg-code">
+<code class="html">&lt;div class=&quot;wrapper&quot;&gt;
+	&lt;div class=&quot;l-sidebar&quot;&gt;
+		&lt;div class=&quot;l-sidebar__main&quot;&gt;
+		&lt;/div&gt;
+
+		&lt;div class=&quot;l-sidebar__side&quot;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+			</div>
+
+			<div class="wrapper">
+				<div class="l-sidebar">
+					<div class="l-sidebar__main">
+						<div class="sg-placeholder sg-placeholder--large">main</div>
+					</div>
+					<div class="l-sidebar__side">
+						<div class="sg-placeholder sg-placeholder--large">side</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
 
 		<!-- Slideshow -->
 		<section class="sg-section" id="slideshow">
@@ -271,6 +305,12 @@
 					<a href="#slideshow">Slideshow</a>
 				</h1>
 
+				<pre class="sg-code">
+<code class="html">&lt;mr-slideshow class=&quot;slideshow&quot; loop&gt;
+	&lt;img alt=&quot;&quot; src=&quot;&quot;&gt;
+	&lt;img alt=&quot;&quot; src=&quot;&quot;&gt;
+&lt;/mr-slideshow&gt;</code></pre>
+
 				<mr-slideshow class="slideshow" loop>
 					<img alt="" class="slideshow__image" src="https://orakel-eu.imgix.net/files/552/large/Promo%20Tyvek%201.jpg">
 
@@ -278,16 +318,6 @@
 
 					<img alt="" class="slideshow__image" src="https://orakel-eu.imgix.net/files/518/large/Plastic tube closure.jpg">
 				</mr-slideshow>
-
-				<h2>
-					Code
-				</h2>
-
-				<pre class="sg-code">
-<code class="html">&lt;mr-slideshow class=&quot;slideshow&quot; loop&gt;
-	&lt;img alt=&quot;&quot; src=&quot;&quot;&gt;
-	&lt;img alt=&quot;&quot; src=&quot;&quot;&gt;
-&lt;/mr-slideshow&gt;</code></pre>
 			</div>
 		</section>
 
@@ -341,8 +371,8 @@
 
 					<ul class="sg-nav__nav__list">
 						<li class="sg-nav__nav__list__item">
-							<a class="sg-nav__nav__link js-sg-nav-link" href="#typography">
-								Foo
+							<a class="sg-nav__nav__link js-sg-nav-link" href="#layout-sidebar">
+								Sidebar
 							</a>
 						</li>
 					</ul>

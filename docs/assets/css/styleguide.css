@@ -91,6 +91,7 @@
 
 .sg-wrapper {
 	margin: 0 auto;
+	padding: 0 20px;
 	max-width: 740px;
 }
 
@@ -210,3 +211,12 @@
 		font-size: 14px;
 		padding: 20px;
 	}
+
+.sg-placeholder {
+	background-color: rgb(230, 230, 230);
+	height: 5rem;
+}
+
+.sg-placeholder--large {
+	height: 10rem;
+}

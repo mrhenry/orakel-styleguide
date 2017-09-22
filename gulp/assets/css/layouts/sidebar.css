@@ -1,0 +1,22 @@
+.l-sidebar {
+	@media (--mq-from-small) {
+		display: flex;
+	}
+}
+
+.l-sidebar__main {
+	@media (--mq-from-small) {
+		order: 2;
+		width: 78%;
+	}
+
+}
+
+.l-sidebar__side {
+	@media (--mq-from-small) {
+		margin-right: 2%;
+		min-width: 300px;
+		order: 1;
+		width: 20%;
+	}
+}

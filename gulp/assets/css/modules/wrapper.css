@@ -1,0 +1,21 @@
+.wrapper {
+	margin: 0 auto;
+	padding: 0 20px;
+
+	@media (--mq-from-small) {
+		max-width: calc(768px - 40px);
+	}
+
+	@media (--mq-from-medium) {
+		max-width: calc(1024px - 40px);
+	}
+
+	@media (--mq-from-wide) {
+		padding: 0 40px;
+		max-width: calc(1380px - 80px);
+	}
+
+	@media (--mq-from-large) {
+		max-width: calc(1680px - 80px);
+	}
+}
