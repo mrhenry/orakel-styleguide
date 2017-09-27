@@ -3,7 +3,7 @@ import { defineCustomElement, BaseController } from 'custom-elements-helpers';
 defineCustomElement('mr-slideshow', {
 	attributes: [
 		{ attribute: 'loop', type: 'bool' },
-		{ attribute: 'auto', type: 'bool' },
+		{ attribute: 'auto', type: 'int' },
 		{ attribute: 'current', type: 'int' },
 	],
 	controller: class extends BaseController {
@@ -41,6 +41,42 @@ defineCustomElement('mr-slideshow', {
 			this.el.setAttribute('current', parsed);
 		}
 
+		set auto(to) {
+			const parsed = parseInt(to, 10);
+
+			if (parsed === this.auto) {
+				return;
+			}
+
+			if (parsed <= 0) {
+				this.el.removeAttribute('auto');
+			} else {
+				this.el.setAttribute('auto', parsed);
+			}
+
+			this.start();
+		}
+
+		start() {
+			this.stop();
+
+			if (this.auto && this.auto > 0) {
+				console.log('Starting auto interval', this.auto);
+
+				this.looper = setInterval(() => {
+					this.next();
+				}, this.auto);
+			}
+		}
+
+		stop() {
+			if (this.looper) {
+				console.log('Stopping auto interval');
+				clearInterval(this.looper);
+				this.looper = null;
+			}
+		}
+
 		next() {
 			this.current = this.current + 1;
 		}
@@ -63,24 +99,12 @@ defineCustomElement('mr-slideshow', {
 			this.elements.items = Array.from(this.el.children);
 
 			this.current = 0;
-		}
 
-		bind() {
-			if (this.auto) {
-				this.looper = setInterval(() => {
-					this.next();
-				}, 4000);
-			}
-
-			return this;
+			this.start();
 		}
 
 		destroy() {
-			if (this.looper) {
-				clearInterval(this.looper);
-				this.looper = null;
-			}
-
+			this.stop();
 			super.destroy();
 		}
 	},
