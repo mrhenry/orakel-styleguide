@@ -62,24 +62,63 @@ function waitForDOMReady() {
 	});
 }
 
+function elementIsInDOM(element, root = document.body) {
+	if (!element) {
+		return false;
+	}
+
+	if (element === root) {
+		return false;
+	}
+
+	return root.contains(element);
+}
+
+const BASE_CONTROLLER_HANDLERS = Symbol('BASE_CONTROLLER_HANDLERS');
+
 class BaseController {
 	constructor(el) {
+		const noop = () => {};
+
 		this.el = el;
 
 		this.resolve().then(() => {
+			if (!elementIsInDOM(this.el)) {
+				return Promise.reject('The element has disappeared');
+			}
+
 			this.el.classList.add('is-resolved');
 
-			const init = () => promisify(() => this.init());
-			const render = () => promisify(() => this.render());
-			const bind = () => promisify(() => this.bind());
+			const init = () => promisify(() => {
+				if (!elementIsInDOM(this.el)) {
+					return Promise.reject('The element has disappeared');
+				}
 
-			return init().then(() => render().then(() => bind().then(() => this)));
-		});
+				return this.init();
+			});
+
+			const render = () => promisify(() => {
+				if (!elementIsInDOM(this.el)) {
+					return Promise.reject('The element has disappeared');
+				}
+
+				return this.render();
+			});
+
+			const bind = () => promisify(() => {
+				if (!elementIsInDOM(this.el)) {
+					return Promise.reject('The element has disappeared');
+				}
+
+				return this.bind();
+			});
+
+			return init().then(() => render().then(() => bind().then(() => this))).catch(noop);
+		}).catch(noop);
 	}
 
 	destroy() {
 		this.el.classList.remove('is-resolved');
-		return this.unbind();
 	}
 
 	resolve() {
@@ -93,17 +132,17 @@ class BaseController {
 	bind() { }
 
 	unbind() {
-		if (this._handlers) {
-			this._handlers.forEach((listener) => {
+		if (this[BASE_CONTROLLER_HANDLERS]) {
+			this[BASE_CONTROLLER_HANDLERS].forEach((listener) => {
 				listener.target.removeEventListener(listener.event, listener.handler, listener.options);
 			});
-		}
 
-		return this;
+			this[BASE_CONTROLLER_HANDLERS] = [];
+		}
 	}
 
 	on(name, handler, target = null, options = false) {
-		this._handlers = this._handlers || [];
+		this[BASE_CONTROLLER_HANDLERS] = this[BASE_CONTROLLER_HANDLERS] || [];
 
 		const { event, selector } = parse(name);
 		const parsedTarget = !target ? this.el : target;
@@ -134,7 +173,7 @@ class BaseController {
 
 		listener.target.addEventListener(listener.event, listener.handler, listener.options);
 
-		this._handlers.push(listener);
+		this[BASE_CONTROLLER_HANDLERS].push(listener);
 
 		return this;
 	}
@@ -152,7 +191,7 @@ class BaseController {
 		const { event, selector } = parse(name);
 		const parsedTarget = !target ? this.el : target;
 
-		const listener = this._handlers.find((handler) => {
+		const listener = this[BASE_CONTROLLER_HANDLERS].find((handler) => {
 			// Selectors don't match
 			if (handler.selector !== selector) {
 				return false;
@@ -173,7 +212,7 @@ class BaseController {
 		});
 
 		if (!!listener && !!listener.target) {
-			this._handlers.splice(this._handlers.indexOf(listener), 1);
+			this[BASE_CONTROLLER_HANDLERS].splice(this[BASE_CONTROLLER_HANDLERS].indexOf(listener), 1);
 
 			listener.target.removeEventListener(listener.event, listener.handler, listener.options);
 		}
@@ -1517,7 +1556,15 @@ const registerElement = function (tag, options) {
 		}
 
 		disconnectedCallback() {
-			this[CONTROLLER].destroy();
+			if (typeof this[CONTROLLER].unbind === 'function') {
+				this[CONTROLLER].unbind();
+			}
+
+			if (typeof this[CONTROLLER].destroy === 'function') {
+				this[CONTROLLER].destroy();
+			}
+
+			this[CONTROLLER] = null;
 		}
 	});
 };
@@ -1667,14 +1714,16 @@ function defineCustomElement(tag, options = {}) {
 defineCustomElement('mr-slideshow', {
 	attributes: [
 		{ attribute: 'loop', type: 'bool' },
+		{ attribute: 'auto', type: 'bool' },
+		{ attribute: 'current', type: 'int' },
 	],
 	controller: class extends BaseController {
-		get current() {
-			return this._current;
-		}
-
 		set current(to) {
 			let parsed = parseInt(to, 10);
+
+			if (parsed === this.current) {
+				return;
+			}
 
 			const max = this.elements.items.length;
 
@@ -1700,7 +1749,15 @@ defineCustomElement('mr-slideshow', {
 				}
 			});
 
-			this._current = parsed;
+			this.el.setAttribute('current', parsed);
+		}
+
+		next() {
+			this.current = this.current + 1;
+		}
+
+		previous() {
+			this.current = this.current - 1;
 		}
 
 		resolve() {
@@ -1708,23 +1765,21 @@ defineCustomElement('mr-slideshow', {
 				// Keep hanging, don't activate if empty
 				return new Promise(() => {});
 			}
+
 			return super.resolve();
 		}
 
 		init() {
-			this.elements = {
-				items: Array.from(this.el.children),
-			};
+			this.elements = {};
+			this.elements.items = Array.from(this.el.children);
 
 			this.current = 0;
-
-			return this;
 		}
 
 		bind() {
-			if (this.loop) {
+			if (this.auto) {
 				this.looper = setInterval(() => {
-					this.current = this.current + 1;
+					this.next();
 				}, 4000);
 			}
 
@@ -1736,6 +1791,8 @@ defineCustomElement('mr-slideshow', {
 				clearInterval(this.looper);
 				this.looper = null;
 			}
+
+			super.destroy();
 		}
 	},
 });

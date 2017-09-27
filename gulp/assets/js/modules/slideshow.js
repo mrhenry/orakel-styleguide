@@ -3,14 +3,16 @@ import { defineCustomElement, BaseController } from 'custom-elements-helpers';
 defineCustomElement('mr-slideshow', {
 	attributes: [
 		{ attribute: 'loop', type: 'bool' },
+		{ attribute: 'auto', type: 'bool' },
+		{ attribute: 'current', type: 'int' },
 	],
 	controller: class extends BaseController {
-		get current() {
-			return this._current;
-		}
-
 		set current(to) {
 			let parsed = parseInt(to, 10);
+
+			if (parsed === this.current) {
+				return;
+			}
 
 			const max = this.elements.items.length;
 
@@ -36,7 +38,15 @@ defineCustomElement('mr-slideshow', {
 				}
 			});
 
-			this._current = parsed;
+			this.el.setAttribute('current', parsed);
+		}
+
+		next() {
+			this.current = this.current + 1;
+		}
+
+		previous() {
+			this.current = this.current - 1;
 		}
 
 		resolve() {
@@ -44,23 +54,21 @@ defineCustomElement('mr-slideshow', {
 				// Keep hanging, don't activate if empty
 				return new Promise(() => {});
 			}
+
 			return super.resolve();
 		}
 
 		init() {
-			this.elements = {
-				items: Array.from(this.el.children),
-			};
+			this.elements = {};
+			this.elements.items = Array.from(this.el.children);
 
 			this.current = 0;
-
-			return this;
 		}
 
 		bind() {
-			if (this.loop) {
+			if (this.auto) {
 				this.looper = setInterval(() => {
-					this.current = this.current + 1;
+					this.next();
 				}, 4000);
 			}
 
@@ -72,6 +80,8 @@ defineCustomElement('mr-slideshow', {
 				clearInterval(this.looper);
 				this.looper = null;
 			}
+
+			super.destroy();
 		}
 	},
 });
