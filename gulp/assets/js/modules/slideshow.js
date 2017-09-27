@@ -28,17 +28,9 @@ defineCustomElement('mr-slideshow', {
 				parsed = this.loop ? max - 1 : 0;
 			}
 
-			this.elements.items.forEach((item, i) => {
-				if (item.classList.contains('is-active')) {
-					item.classList.remove('is-active');
-				}
-
-				if (i === parsed) {
-					item.classList.add('is-active');
-				}
-			});
-
 			this.el.setAttribute('current', parsed);
+
+			this.render();
 		}
 
 		set auto(to) {
@@ -61,8 +53,6 @@ defineCustomElement('mr-slideshow', {
 			this.stop();
 
 			if (this.auto && this.auto > 0) {
-				console.log('Starting auto interval', this.auto);
-
 				this.looper = setInterval(() => {
 					this.next();
 				}, this.auto);
@@ -71,7 +61,6 @@ defineCustomElement('mr-slideshow', {
 
 		stop() {
 			if (this.looper) {
-				console.log('Stopping auto interval');
 				clearInterval(this.looper);
 				this.looper = null;
 			}
@@ -98,9 +87,23 @@ defineCustomElement('mr-slideshow', {
 			this.elements = {};
 			this.elements.items = Array.from(this.el.children);
 
-			this.current = 0;
+			if (!this.current) {
+				this.current = 0;
+			}
 
 			this.start();
+		}
+
+		render() {
+			this.elements.items.forEach((item, i) => {
+				if (item.classList.contains('is-active')) {
+					item.classList.remove('is-active');
+				}
+
+				if (i === this.current) {
+					item.classList.add('is-active');
+				}
+			});
 		}
 
 		destroy() {
