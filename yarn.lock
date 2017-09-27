@@ -1640,8 +1640,8 @@ currently-unhandled@^0.4.1:
     array-find-index "^1.0.1"
 
 custom-elements-helpers@^2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/custom-elements-helpers/-/custom-elements-helpers-2.0.2.tgz#23aeebe8dbc52dcf6021bb8ad53b678d7bdf4a8d"
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/custom-elements-helpers/-/custom-elements-helpers-2.1.0.tgz#e0e777625033578feccd6fef3ec9c7967e145e33"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -2046,8 +2046,8 @@ eslint-scope@^3.7.1:
     estraverse "^4.1.1"
 
 eslint@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.7.0.tgz#d35fc07c472520be3de85b3da11e99c576afd515"
+  version "4.7.2"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-4.7.2.tgz#ff6f5f5193848a27ee9b627be3e73fb9cb5e662e"
   dependencies:
     ajv "^5.2.0"
     babel-code-frame "^6.22.0"
@@ -2737,13 +2737,6 @@ gulp-imagemin@^3.3.0:
     imagemin-optipng "^5.1.0"
     imagemin-svgo "^5.1.0"
 
-gulp-plumber@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gulp-plumber/-/gulp-plumber-1.1.0.tgz#f12176c2d0422f60306c242fff6a01a394faba09"
-  dependencies:
-    gulp-util "^3"
-    through2 "^2"
-
 gulp-postcss@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/gulp-postcss/-/gulp-postcss-7.0.0.tgz#cfb62a19fa947f8be67ce9ecae89ceb959f0cf93"
@@ -2786,7 +2779,7 @@ gulp-uglify@^3.0.0:
     uglify-js "^3.0.5"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-util@^3, gulp-util@^3.0.0, gulp-util@^3.0.1, gulp-util@^3.0.7, gulp-util@^3.0.8:
+gulp-util@^3.0.0, gulp-util@^3.0.1, gulp-util@^3.0.7, gulp-util@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -5951,7 +5944,7 @@ through2@^0.6.0, through2@^0.6.1:
     readable-stream ">=1.0.33-1 <1.1.0-0"
     xtend ">=4.0.0 <4.1.0-0"
 
-through2@^2, through2@^2.0.0, through2@^2.0.3, through2@~2.0.0:
+through2@^2.0.0, through2@^2.0.3, through2@~2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.3.tgz#0004569b37c7c74ba39c43f3ced78d1ad94140be"
   dependencies:
