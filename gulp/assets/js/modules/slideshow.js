@@ -3,14 +3,16 @@ import { defineCustomElement, BaseController } from 'custom-elements-helpers';
 defineCustomElement('mr-slideshow', {
 	attributes: [
 		{ attribute: 'loop', type: 'bool' },
+		{ attribute: 'auto', type: 'int' },
+		{ attribute: 'current', type: 'int' },
 	],
 	controller: class extends BaseController {
-		get current() {
-			return this._current;
-		}
-
 		set current(to) {
 			let parsed = parseInt(to, 10);
+
+			if (parsed === this.current) {
+				return;
+			}
 
 			const max = this.elements.items.length;
 
@@ -26,17 +28,50 @@ defineCustomElement('mr-slideshow', {
 				parsed = this.loop ? max - 1 : 0;
 			}
 
-			this.elements.items.forEach((item, i) => {
-				if (item.classList.contains('is-active')) {
-					item.classList.remove('is-active');
-				}
+			this.el.setAttribute('current', parsed);
 
-				if (i === parsed) {
-					item.classList.add('is-active');
-				}
-			});
+			this.render();
+		}
 
-			this._current = parsed;
+		set auto(to) {
+			const parsed = parseInt(to, 10);
+
+			if (parsed === this.auto) {
+				return;
+			}
+
+			if (parsed <= 0) {
+				this.el.removeAttribute('auto');
+			} else {
+				this.el.setAttribute('auto', parsed);
+			}
+
+			this.start();
+		}
+
+		start() {
+			this.stop();
+
+			if (this.auto && this.auto > 0) {
+				this.looper = setInterval(() => {
+					this.next();
+				}, this.auto);
+			}
+		}
+
+		stop() {
+			if (this.looper) {
+				clearInterval(this.looper);
+				this.looper = null;
+			}
+		}
+
+		next() {
+			this.current = this.current + 1;
+		}
+
+		previous() {
+			this.current = this.current - 1;
 		}
 
 		resolve() {
@@ -44,34 +79,36 @@ defineCustomElement('mr-slideshow', {
 				// Keep hanging, don't activate if empty
 				return new Promise(() => {});
 			}
+
 			return super.resolve();
 		}
 
 		init() {
-			this.elements = {
-				items: Array.from(this.el.children),
-			};
+			this.elements = {};
+			this.elements.items = Array.from(this.el.children);
 
-			this.current = 0;
-
-			return this;
-		}
-
-		bind() {
-			if (this.loop) {
-				this.looper = setInterval(() => {
-					this.current = this.current + 1;
-				}, 4000);
+			if (!this.current) {
+				this.current = 0;
 			}
 
-			return this;
+			this.start();
+		}
+
+		render() {
+			this.elements.items.forEach((item, i) => {
+				if (item.classList.contains('is-active')) {
+					item.classList.remove('is-active');
+				}
+
+				if (i === this.current) {
+					item.classList.add('is-active');
+				}
+			});
 		}
 
 		destroy() {
-			if (this.looper) {
-				clearInterval(this.looper);
-				this.looper = null;
-			}
+			this.stop();
+			super.destroy();
 		}
 	},
 });
