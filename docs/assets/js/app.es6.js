@@ -62,63 +62,24 @@ function waitForDOMReady() {
 	});
 }
 
-function elementIsInDOM(element, root = document.body) {
-	if (!element) {
-		return false;
-	}
-
-	if (element === root) {
-		return false;
-	}
-
-	return root.contains(element);
-}
-
-const BASE_CONTROLLER_HANDLERS = Symbol('BASE_CONTROLLER_HANDLERS');
-
 class BaseController {
 	constructor(el) {
-		const noop = () => {};
-
 		this.el = el;
 
 		this.resolve().then(() => {
-			if (!elementIsInDOM(this.el)) {
-				return Promise.reject('The element has disappeared');
-			}
-
 			this.el.classList.add('is-resolved');
 
-			const init = () => promisify(() => {
-				if (!elementIsInDOM(this.el)) {
-					return Promise.reject('The element has disappeared');
-				}
+			const init = () => promisify(() => this.init());
+			const render = () => promisify(() => this.render());
+			const bind = () => promisify(() => this.bind());
 
-				return this.init();
-			});
-
-			const render = () => promisify(() => {
-				if (!elementIsInDOM(this.el)) {
-					return Promise.reject('The element has disappeared');
-				}
-
-				return this.render();
-			});
-
-			const bind = () => promisify(() => {
-				if (!elementIsInDOM(this.el)) {
-					return Promise.reject('The element has disappeared');
-				}
-
-				return this.bind();
-			});
-
-			return init().then(() => render().then(() => bind().then(() => this))).catch(noop);
-		}).catch(noop);
+			return init().then(() => render().then(() => bind().then(() => this)));
+		});
 	}
 
 	destroy() {
 		this.el.classList.remove('is-resolved');
+		return this.unbind();
 	}
 
 	resolve() {
@@ -132,17 +93,17 @@ class BaseController {
 	bind() { }
 
 	unbind() {
-		if (this[BASE_CONTROLLER_HANDLERS]) {
-			this[BASE_CONTROLLER_HANDLERS].forEach((listener) => {
+		if (this._handlers) {
+			this._handlers.forEach((listener) => {
 				listener.target.removeEventListener(listener.event, listener.handler, listener.options);
 			});
-
-			this[BASE_CONTROLLER_HANDLERS] = [];
 		}
+
+		return this;
 	}
 
 	on(name, handler, target = null, options = false) {
-		this[BASE_CONTROLLER_HANDLERS] = this[BASE_CONTROLLER_HANDLERS] || [];
+		this._handlers = this._handlers || [];
 
 		const { event, selector } = parse(name);
 		const parsedTarget = !target ? this.el : target;
@@ -173,7 +134,7 @@ class BaseController {
 
 		listener.target.addEventListener(listener.event, listener.handler, listener.options);
 
-		this[BASE_CONTROLLER_HANDLERS].push(listener);
+		this._handlers.push(listener);
 
 		return this;
 	}
@@ -191,7 +152,7 @@ class BaseController {
 		const { event, selector } = parse(name);
 		const parsedTarget = !target ? this.el : target;
 
-		const listener = this[BASE_CONTROLLER_HANDLERS].find((handler) => {
+		const listener = this._handlers.find((handler) => {
 			// Selectors don't match
 			if (handler.selector !== selector) {
 				return false;
@@ -212,7 +173,7 @@ class BaseController {
 		});
 
 		if (!!listener && !!listener.target) {
-			this[BASE_CONTROLLER_HANDLERS].splice(this[BASE_CONTROLLER_HANDLERS].indexOf(listener), 1);
+			this._handlers.splice(this._handlers.indexOf(listener), 1);
 
 			listener.target.removeEventListener(listener.event, listener.handler, listener.options);
 		}
@@ -1556,15 +1517,7 @@ const registerElement = function (tag, options) {
 		}
 
 		disconnectedCallback() {
-			if (typeof this[CONTROLLER].unbind === 'function') {
-				this[CONTROLLER].unbind();
-			}
-
-			if (typeof this[CONTROLLER].destroy === 'function') {
-				this[CONTROLLER].destroy();
-			}
-
-			this[CONTROLLER] = null;
+			this[CONTROLLER].destroy();
 		}
 	});
 };
